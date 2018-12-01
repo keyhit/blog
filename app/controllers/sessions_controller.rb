@@ -15,6 +15,6 @@ class SessionsController < ApplicationController
 
   def logout
     reset_session
-    redirect_to users_url
+    redirect_to root_url
   end
 end

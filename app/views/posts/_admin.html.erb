@@ -1,0 +1,12 @@
+<% @all_posts.each do |post| %>
+<p>
+  <h2><%= post.header %></h2>
+  <p><%= post.body %>
+    <p>
+      <%= link_to 'Show', user_post_path(current_user, post) %>
+      <%= link_to 'Edit', edit_user_post_path(current_user, post) %>
+      <%= link_to 'Destroy', user_post_path(current_user, post), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </p>
+  </p>
+</p>
+<% end %>

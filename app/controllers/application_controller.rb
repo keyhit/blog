@@ -12,4 +12,9 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
   helper_method :current_user
+
+  def posts_comments(params)
+    @posts_comments ||= Comment.where(params) 
+  end
+  helper_method :posts_comments
 end

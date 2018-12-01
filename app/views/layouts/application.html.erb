@@ -10,6 +10,17 @@
   </head>
 
   <body>
+    <ul>
+      <%= render template: 'layouts/logout_navigation' if current_user %>
+      <%= render template: 'layouts/login_navigation' if current_user.nil? %>
+      <li><%= link_to 'About',
+         'https://github.com/keyhit/blog',
+          target: '_blank',
+          title: 'Project at github' %>
+     </li>
+      <%= render template: 'layouts/user_navigation' if current_user %>
+    </ul>
+    <p id="notice"><%= notice %></p>
     <%= yield %>
   </body>
 </html>
