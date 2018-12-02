@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :require_login
+  before_action :require_login, except: [:index]
   # binding.pry
 
   def index
@@ -46,7 +46,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to user_post_comments_path(params[:user_id], params[:post_id], params[:id]), notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to user_post_comments_path(params[:user_id], params[:post_id], params[:id]), notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

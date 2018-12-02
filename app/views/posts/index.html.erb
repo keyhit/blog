@@ -1,11 +1,14 @@
-All posts
+<h1>All posts</h1>
 <% @all_posts.each do |post| %>
 <p>
   <h2><%= post.header %></h2>
   <p>
-    <%= post.body %>
+    <%= post.body.to_s[0..200] %> ...
+    <%= link_to 'Read more', user_post_path(post.user_id, post.id) %>
     </br>
-    <%= link_to 'Comments', user_post_comments_path(post.user_id, post.id) %>
+    <%= link_to 'Comments', user_post_comments_path(post.user_id, post.id) %> 
+
+
   </p>
 </p>
 

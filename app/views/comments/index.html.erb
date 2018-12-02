@@ -10,5 +10,6 @@
 <p>
   </br>
   <%= link_to 'New comment', new_user_post_comment_path(params[:user_id], params[:post_id]) %> |
-  <%= link_to 'Back to all posts', all_posts_path %>
+  <%= link_to 'Back to all posts', all_posts_path %> |
+  <%= link_to 'Back to post', user_post_path(params[:user_id], params[:post_id]) %>
 </p>

@@ -1,2 +1,7 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<h1><%= @post.header%></h1>
+<p><%= @post.body%></p>
+
+<%= link_to 'Comments', user_post_comments_path(@post.user_id, @post.id) %> | 
+<%= link_to 'All posts', all_posts_path %>
+<%= link_to '| Edit post', edit_user_post_path(@post.user_id, @post.id) if current_user  %> 
+<%= link_to '| Destroy post', user_post_path(@post.user_id, @post.id), method: :delete if current_user  %> 

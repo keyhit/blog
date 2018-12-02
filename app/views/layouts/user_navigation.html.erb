@@ -1,3 +1,4 @@
 <li><%= link_to 'My posts', my_posts_url(current_user)%></li>
+<li><%= link_to 'New post', new_user_post_path(current_user) if current_user %></li>
 <li><%= link_to 'My Comments', user_post_comments_path(1, current_user) %></li>
 <li><%= "You here as: #{current_user.name}" if current_user %></li>
