@@ -35,3 +35,5 @@ post4 = Post.create(
 
 Comment.create(text: 'Comment 1 user 1 post 1', user_id: '1', post_id: '1')
 Comment.create(text: 'Comment 2 user 1 post 1', user_id: '1', post_id: '1')
+Comment.create(text: 'Comment 3 user 2 post 2', user_id: '2', post_id: '2')
+Comment.create(text: 'Comment 4 user 3 post 3', user_id: '3', post_id: '3')

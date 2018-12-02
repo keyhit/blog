@@ -2,12 +2,11 @@ All posts
 <% @all_posts.each do |post| %>
 <p>
   <h2><%= post.header %></h2>
-  <p><%= post.body %>
-  </br>
-     <% posts_comments(post_id: post.id).each do |comment| %>
-       <%= comment.text if post.id == comment.post_id %></br>
-     <% end %>
-    <%= link_to 'Comment it', new_user_post_comment_path(current_user, post.id) %>
+  <p>
+    <%= post.body %>
+    </br>
+    <%= link_to 'Comments', user_post_comments_path(post.user_id, post.id) %>
   </p>
 </p>
+
 <% end %>

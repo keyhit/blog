@@ -2,4 +2,4 @@
 
 <%= render 'form', user: @user %>
 
-<%= link_to 'Back',all_posts_path %>
+<%= link_to 'Back', user_post_comments_path(params[:user_id], params[:post_id], params[:id]) %>

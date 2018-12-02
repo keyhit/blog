@@ -1,2 +1,5 @@
-<h1>Comments#edit</h1>
-<p>Find me in app/views/comments/edit.html.erb</p>
+<h1>Edit comment</h1>
+
+<%= render 'form', user: @user %>
+
+<%= link_to 'Comments', user_post_comments_path(params[:user_id], params[:post_id], params[:id]) %>

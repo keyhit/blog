@@ -1,2 +1,14 @@
-<h1>Comments#index</h1>
-<p>Find me in app/views/comments/index.html.erb</p>
+<h1>Comments</h1>
+  <% @post_comment.each do |comment| %>
+  <p>
+    <%= comment.text %>
+    </br>
+    <%= link_to 'Edit', edit_user_post_comment_path(params[:user_id], params[:post_id], comment.id) %>  |  
+    <%= link_to 'Drop', user_post_comment_path(params[:user_id], params[:post_id], comment.id), method: :delete %>
+  </p>
+  <% end %>
+<p>
+  </br>
+  <%= link_to 'New comment', new_user_post_comment_path(params[:user_id], params[:post_id]) %> |
+  <%= link_to 'Back to all posts', all_posts_path %>
+</p>
