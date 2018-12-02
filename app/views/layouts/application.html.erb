@@ -8,20 +8,35 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <ul>
-      <%= render template: 'layouts/logout_navigation' if current_user %>
-      <%= render template: 'layouts/login_navigation' if current_user.nil? %>
-      <li><%= link_to 'About',
-         'https://github.com/keyhit/blog',
-          target: '_blank',
-          title: 'Project at github' %>
-     </li>
-     <li><%= link_to 'All posts', all_posts_path %></li>
-      <%= render template: 'layouts/user_navigation' if current_user %>
-    </ul>
-    <p id="notice"><%= notice %></p>
-    <%= yield %>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <%= render template: 'layouts/logout_navigation' if current_user %>
+          <%= render template: 'layouts/login_navigation' if current_user.nil? %>
+          <li class="nav-item"><%= link_to 'About',
+            'https://github.com/keyhit/blog',
+             target: '_blank',
+             title: 'Project at github', class: 'nav-link' %>
+          </li>
+          <li class="nav-item"><%= link_to 'All posts', all_posts_path, class: 'nav-link '%></li>
+          <%= render template: 'layouts/user_navigation' if current_user %>
+        </ul>
+        <span class="navbar-text">
+          <p id="notice"><%= notice %></p>
+        </span>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="col-11">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

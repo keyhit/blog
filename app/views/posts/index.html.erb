@@ -1,15 +1,18 @@
-<h1>All posts</h1>
-<% @all_posts.each do |post| %>
-<p>
-  <h2><%= post.header %></h2>
-  <p>
-    <%= post.body.to_s[0..200] %> ...
-    <%= link_to 'Read more', user_post_path(post.user_id, post.id) %>
-    </br>
-    <%= link_to 'Comments', user_post_comments_path(post.user_id, post.id) %> 
-
-
-  </p>
-</p>
-
-<% end %>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-11">
+      <h3>All posts</h3>
+      <% @all_posts.each do |post| %>
+      <p>
+        <h2><%= post.header %></h2>
+        <p>
+          <%= post.body[0..200] %> ...
+          <%= link_to 'Read more', user_post_path(post.user_id, post.id) %>
+          </br>
+          <%= link_to 'Comments', user_post_comments_path(post.user_id, post.id) %> 
+        </p>
+      </p>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,9 @@
-<h1>Edit comment</h1>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-11">
+      <h3>Edit comment</h3>
+        <%= render 'form'%>
+    </div>
+  </div>
+</div>
 
-<%= render 'form', user: @user %>
-
-<%= link_to 'Comments', user_post_comments_path(params[:user_id], params[:post_id], params[:id]) %>

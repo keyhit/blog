@@ -1,8 +1,7 @@
-<%= form_with model: [@user, @post], local: true do |form| %>
+<%= bootstrap_form_with model: [@user, @post], local: true do |form| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this @post from being saved:</h2>
-
       <ul>
       <% @post.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,18 +9,10 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :header %>
     <%= form.text_field :header %>
-  </div>
-
-  <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body, cols: 50, rows: 20 %>
-  </div>
-
-  <div class="actions">
+    <%= form.text_area :body, cols: 50, rows: 10 %>
     <%= form.submit %>
-  </div>
+    <%= link_to 'Back to post', user_post_path(params[:user_id], params[:id]) , type: 'button', class: 'btn btn-light' if params[:action] == 'edit' %>
+
+    <%= link_to 'All posts', all_posts_path , type: 'button', class: 'btn btn-light' if params[:action] == 'new' %>
 <% end %>

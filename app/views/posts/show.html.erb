@@ -1,7 +1,12 @@
-<h1><%= @post.header%></h1>
-<p><%= @post.body%></p>
-
-<%= link_to 'Comments', user_post_comments_path(@post.user_id, @post.id) %> | 
-<%= link_to 'All posts', all_posts_path %>
-<%= link_to '| Edit post', edit_user_post_path(@post.user_id, @post.id) if current_user  %> 
-<%= link_to '| Destroy post', user_post_path(@post.user_id, @post.id), method: :delete if current_user  %> 
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-11">
+      <h3><%= @post.header%></h3>
+      <p><%= @post.body%></p>
+      <%= link_to 'Comments', user_post_comments_path(@post.user_id, @post.id) %> | 
+      <%= link_to 'All posts', all_posts_path %>
+      <%= link_to '| Edit post', edit_user_post_path(@post.user_id, @post.id) if current_user  %> 
+      <%= link_to '| Destroy post', user_post_path(@post.user_id, @post.id), method: :delete if current_user  %> 
+    </div>
+  </div>
+</div>

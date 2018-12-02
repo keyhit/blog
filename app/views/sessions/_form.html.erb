@@ -1,16 +1,13 @@
-<%= form_with url:  session_create_path, local: true do |form| %>
-
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.email_field :email %>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-4">
+      <h1>Login</h1>
+      <%= bootstrap_form_with url:  session_create_path, local: true do |form| %>
+        <%= form.email_field :email %>
+        <%= form.password_field :password %>
+        <%= form.submit 'Log in' %>
+        <%= link_to 'Registration', new_user_path, type: 'button', class: 'btn btn-light'%>
+      <% end %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :password, 'Password' %>
-    <%= form.password_field :password %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit 'Log in' %>
-  </div>
-<% end %>
+</div>
