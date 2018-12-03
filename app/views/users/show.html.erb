@@ -9,6 +9,16 @@
 </p>
 
 <p>
+  <strong>large avatar:</strong>
+  <%= image_tag("#{@user.avatar}") if @user.avatar %>
+</p>
+
+<p>
+  <strong>small avatar:</strong>
+ <%= image_tag @user.avatar_url(:thumb) if @user.avatar.present? %>
+</p>
+
+<p>
   <strong>Password digest:</strong>
   <%= @user.password_digest %>
 </p>

@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2018_11_30_155301) do
   create_table "posts", force: :cascade do |t|
     t.string "header"
     t.string "body"
+    t.string "image"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -35,6 +36,7 @@ ActiveRecord::Schema.define(version: 2018_11_30_155301) do
     t.string "name"
     t.string "email"
     t.string "password_digest"
+    t.string "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

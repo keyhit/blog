@@ -2,6 +2,7 @@
   <div class="row justify-content-md-center">
     <div class="col-11">
       <h3><%= @post.header%></h3>
+      <%= image_tag @post.image_url, class: 'leftimg' if @post.image.present? %>
       <p><%= @post.body%></p>
       <%= link_to 'Comments', user_post_comments_path(@post.user_id, @post.id) %> | 
       <%= link_to 'All posts', all_posts_path %>

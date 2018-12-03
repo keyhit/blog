@@ -1,5 +1,5 @@
 <li class="nav-item">
-  <%= link_to 'My posts', my_posts_url(current_user), class: 'nav-link' %>
+  <%= link_to 'My posts', all_user_posts_url(current_user), class: 'nav-link' %>
   </li>
 
 <li class="nav-item">
@@ -7,7 +7,7 @@
  </li>
 
 <li class="nav-item">
- <%= link_to 'My Comments', user_post_comments_path(1, current_user), class: 'nav-link' %>
+ <%= link_to 'My Comments', user_comments_path(current_user), class: 'nav-link' %>
  </li>
 
 <li class="nav-item">

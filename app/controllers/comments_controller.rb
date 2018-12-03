@@ -6,6 +6,10 @@ class CommentsController < ApplicationController
     @post_comment = Comment.where(post_id: params[:post_id])
   end
 
+  def user_comments
+    @user_comment = Comment.where(user_id: params[:id])
+  end
+
   def show; end
 
   def new

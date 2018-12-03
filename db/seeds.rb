@@ -5,9 +5,23 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-user1 = User.create(name: 'slava1', email: '1@1', password: '1')
-user2 = User.create(name: 'slava2', email: '2@2', password: '2')
-user3 = User.create(name: 'slava3', email: '3@3', password: '3')
+user1 = User.create(
+  name: 'slava1',
+  email: '1@1',
+  password: '1',
+  avatar: '/uploads/user/avatar/4/Screenshot_from_2018-10-23_20-56-26.png' )
+
+user2 = User.create(
+  name: 'slava2',
+  email: '2@2',
+  password: '2',
+  avatar: '/uploads/user/avatar/4/Screenshot_from_2018-10-23_20-56-26.png' )
+
+user3 = User.create(
+  name: 'slava3',
+  email: '3@3',
+  password: '3',
+  avatar: '/uploads/user/avatar/4/Screenshot_from_2018-10-23_20-56-26.png' )
 
 post1 = Post.create(
   header: 'Post header 1 user 1',

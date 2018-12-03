@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   end
 
   def all_user_posts
-    @all_user_posts = Post.find_by(user_id: params[:id])
+    @all_user_posts = Post.where(user_id: params[:id])
   end
 
   def my_posts
@@ -59,6 +59,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:header, :body).merge(user_id: params[:user_id])
+    params.require(:post).permit(:header, :body, :image).merge(user_id: params[:user_id])
   end
 end
