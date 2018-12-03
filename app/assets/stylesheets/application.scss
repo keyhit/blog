@@ -13,3 +13,12 @@
  *= require rails_bootstrap_forms
  */
 @import "bootstrap";
+
+body{
+  background-image: url(background.jpg);
+}
+
+.content {
+  background-color: white;
+  padding: 3%;
+}
