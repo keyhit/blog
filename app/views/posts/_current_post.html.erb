@@ -1,0 +1,15 @@
+</div>
+  <div id='<%="current_post#{@post.id}"%>'>
+    <div id="current_post_body">
+      <p>
+        <%= render 'posts/show' %>
+      </p>
+    <div id="current_post_footter">
+      <%= link_to "Return to posts",
+        user_posts_path(
+          current_user,
+          anchor: "post_preview#{@post.id}"),
+        id: "close_current_post#{@post.id}" %>
+    </div>
+    </div>
+  </div>

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'my_posts/:id', to: 'posts#my_posts', as: 'my_posts'
   get 'user_comments/:id', to: 'comments#user_comments', as: 'user_comments'
 
+  resources :sessions
   get 'session/login', to: 'sessions#login', as: 'session_login'
   post 'session/create', to: 'sessions#create', as: 'session_create'
   get 'session/logout', to: 'sessions#logout', as: 'session_loguot'

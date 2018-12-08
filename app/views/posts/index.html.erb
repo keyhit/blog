@@ -2,12 +2,22 @@
   <div class="row justify-content-md-center">
     <div class="col-11">
       <h3>All posts</h3>
+
       <% @all_posts.each do |post| %>
-      <h2><%= post.header %></h2>
+
+      <div id='<%= "current_post#{post.id}"%>'></div>
+      <div id= '<%= "post_preview#{post.id}"%>'>
+
+      <h3 id='posts_headers'><%= post.header.to_s %></h3>
+
         <p>
-          <%= image_tag post.image_url(:thumb), class: 'leftimg' if post.image.present? %>
+          <%= image_tag post.image_url(:thumb),
+            class: 'leftimg' if post.image.present? %>
           <%= post.body[0..200] %> ...
-          <%= link_to 'Read more', user_post_path(post.user_id, post.id) %>
+          <%= link_to 'read more',
+            user_post_path(post.user_id, post.id),
+            remote: true %>
+
           <section class= "user_info_below_post">
           Created by <i><b><%= post.user.name %> 
           <%= image_tag post.user.avatar_url(:thumb) if post.user.avatar.present? %></b></i>
@@ -15,10 +25,13 @@
           Updated
             <%= post.updated_at.to_s[0..15]%>.
             </section>
-          <%= link_to 'Comments', user_post_comments_path(current_user, post.id) if current_user %> 
+
+          <%= link_to 'Comments', user_post_comments_path(current_user, post.id) if current_user %>
         </p>
         <hr>
+      </div>
       <% end %>
     </div>
   </div>
 </div>
+

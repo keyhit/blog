@@ -2,11 +2,11 @@ class PostsController < ApplicationController
   before_action :require_login, except: [:index, :user_post, :show]
 
   def index
-  @all_posts = Post.all
+  @all_posts ||= Post.all
   end
 
   def all_user_posts
-    @all_user_posts = Post.where(user_id: params[:id])
+    @all_user_posts ||= Post.where(user_id: params[:id])
   end
 
   def my_posts
@@ -40,9 +40,11 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+# binding.pry
     respond_to do |format|
       if @post.update(post_params)
         format.html { redirect_to user_post_path(params[:user_id], params[:id]), notice: 'Post was successfully updated.' }
+        format.js {}
       else
         format.html { render :edit }
       end

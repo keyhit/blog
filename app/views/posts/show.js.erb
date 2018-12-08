@@ -1,0 +1,9 @@
+$('#current_post<%= params[:id]%>').html('<%= j render "posts/current_post" %>');
+$('#post_preview<%= params[:id]%>').hide();
+$('#back_ground_layer').show();
+
+
+$('#close_current_post<%= params[:id]%>').click(function(){
+    $('#post_preview<%= params[:id]%>').show();
+    $('#current_post<%= params[:id]%>').fadeOut(500);
+});
