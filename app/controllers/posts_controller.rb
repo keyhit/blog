@@ -3,6 +3,11 @@ class PostsController < ApplicationController
 
   def index
   @all_posts ||= Post.all
+    respond_to do |format|
+      format.html {  }
+      format.json { render json: @all_posts  }
+      format.js   {  }
+    end
   end
 
   def all_user_posts
@@ -43,6 +48,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     respond_to do |format|
       if @post.update(post_params)
+        @post = Post.find(params[:id])
         format.html { redirect_to user_post_path(params[:user_id], params[:id]), notice: 'Post was successfully updated.' }
         format.js {}
       else

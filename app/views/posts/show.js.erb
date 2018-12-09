@@ -1,6 +1,13 @@
-$('#current_post<%= params[:id]%>').append('<%= j render "show" %>');
+$("#current_post<%= params[:id]%>").hide().append('<%= j render "show" %>' ).fadeIn(400);
+
 $('#post_preview<%= params[:id]%>').hide();
-$('#back_ground_layer').show();
+$('#back_ground_layer').fadeIn(400);
+
+$('#back_ground_layer').click(function(){
+  $(this).fadeOut(400);
+  $('#current_post<%= @post.id %>').fadeOut(400);
+});
+
 
 $('#edit_post').click(function(){
     $('#current_post<%= @post.id %>').hide();
