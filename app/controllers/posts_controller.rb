@@ -15,6 +15,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+        # binding.pry
   end
 
   def new
@@ -40,7 +41,6 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-# binding.pry
     respond_to do |format|
       if @post.update(post_params)
         format.html { redirect_to user_post_path(params[:user_id], params[:id]), notice: 'Post was successfully updated.' }
@@ -61,6 +61,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:header, :body, :image).merge(user_id: params[:user_id])
+    params.require(:post).permit(:header, :body, :image, :user_id)
   end
 end

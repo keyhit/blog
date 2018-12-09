@@ -1,9 +1,8 @@
-$('#current_post<%= params[:id]%>').html('<%= j render "posts/current_post" %>');
+$('#current_post<%= params[:id]%>').append('<%= j render "show" %>');
 $('#post_preview<%= params[:id]%>').hide();
 $('#back_ground_layer').show();
 
-
-$('#close_current_post<%= params[:id]%>').click(function(){
-    $('#post_preview<%= params[:id]%>').show();
-    $('#current_post<%= params[:id]%>').fadeOut(500);
+$('#edit_post').click(function(){
+    $('#current_post<%= @post.id %>').hide();
+    $('#back_ground_layer').hide();
 });

@@ -1,4 +1,4 @@
-<%= bootstrap_form_with model: [@user, @post], local: true, remote:true do |form| %>
+<%= bootstrap_form_with model: [@user, @post], remote: true do |form| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this @post from being saved:</h2>

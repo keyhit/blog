@@ -1,0 +1,6 @@
+$('#<%="edit_current_post#{@post.id}"%>').hide();
+$('#current_post<%= params[:id]%>').show('<%= j render "show" %>');
+// alert("<%= params[:id]%>")
+$('#back_ground_layer').hide();
+// $('#current_post#{@post.id}').hide();
+
