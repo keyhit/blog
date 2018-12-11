@@ -1,7 +1,7 @@
-$("#current_post<%= params[:id]%>").hide().append('<%= j render "show" %>' ).fadeIn(400);
+$("#show_post_<%= @post.id%>").hide().append('<%= j render "show" %>' ).fadeIn(400);
 
-$('#post_preview<%= params[:id]%>').hide();
-$('#back_ground_layer').fadeIn(400);
+$('#header').html('<%= @post.header%>')
+
 
 $('#back_ground_layer').click(function(){
   $(this).fadeOut(400);
@@ -12,4 +12,11 @@ $('#back_ground_layer').click(function(){
 $('#edit_post').click(function(){
     $('#current_post<%= @post.id %>').hide();
     $('#back_ground_layer').hide();
+});
+
+$('#close_post').click(function(){
+    $("#current_post<%= params[:id]%>").fadeOut(400);
+    $('#back_ground_layer').fadeOut(400);
+    $('#post_preview<%= params[:id]%>').fadeIn(400);
+
 });

@@ -1,10 +1,13 @@
 <div id='<%="current_post#{@post.id}"%>'>
   <div id="current_post_body">
+    <%= link_to "X",
+    user_posts_path(
+      @post.user_id,
+      anchor: "post_preview#{@post.id}"),
+    id: "close_post",
+    remote: true %>
     <p>
-    <h3 id="post_header"><%= @post.header%></h3>
-
-<!--       <h3 id="post_header"></h3> -->
-    <div id='ah'></div>
+    <h3 id="header"></h3>
     <%= image_tag @post.image_url, class: 'leftimg' if @post.image.present? %>
     <p><%= @post.body%></p>
 
@@ -19,10 +22,5 @@
       remote: true if current_user  %> 
     <%= link_to '| Destroy post', user_post_path(@post.user_id, @post.id), method: :delete if current_user  %> 
     </p>
-  <div id="current_post_footter">
-    <%= link_to "Return to posts",
-      user_posts_path(@post.user_id, anchor: "post_preview#{@post.id}"),
-      id: "close_current_post#{@post.id}" %>
-  </div>
   </div>
 </div>

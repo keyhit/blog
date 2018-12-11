@@ -1,0 +1,45 @@
+<% @posts.each do |post| %>
+<div id="index_post_<%= post.id%>"
+  <div  class="container">
+    <div class="row">
+      <div class="col-12">
+        <h3 id='posts_headers'><%= post.header.to_s %></h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-3">
+        <p>
+          <%= image_tag post.image_url(:thumb),
+            class: 'leftimg' if post.image.present? %>
+        </p>
+      </div>
+
+      <div class="col-9">
+        <p>
+        <%= post.body[0..440] %> ...
+        <%= link_to 'read more',
+          user_post_path( post.user_id, post.id),
+          id: "current_post#{params[:id]}",
+          remote: true %>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-9">
+        <div class= "user_info_below_post">
+          Created by <i><b><%= post.user.name %> 
+            <%= image_tag post.user.avatar_url(:thumb) if post.user.avatar.present? %></b></i>
+            <%= post.created_at.to_s[0..15]%>.
+            Updated
+              <%= post.updated_at.to_s[0..15]%>.
+        </div>
+      </div>
+      <div class="col-3">
+        <%= link_to 'Comments', user_post_comments_path(current_user, post.id) if current_user %>
+      </div>
+    </div>
+  </div>
+  <hr>
+<div id="show_post_<%= post.id%>"></div>
+<%end%>

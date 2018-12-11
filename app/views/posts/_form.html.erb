@@ -12,7 +12,7 @@
     <%= form.text_field :header %>
     <%= form.file_field :image %>
     <%= form.text_area :body, cols: 50, rows: 10 %>
-    <%= form.submit %>
+    <%= form.submit data: { "disable-with": "Saving..." }%>
     <%= link_to 'Back to post', user_post_path(params[:user_id], params[:id]) , type: 'button', class: 'btn btn-light' if params[:action] == 'edit' %>
 
     <%= link_to 'All posts', all_posts_path , type: 'button', class: 'btn btn-light' if params[:action] == 'new' %>

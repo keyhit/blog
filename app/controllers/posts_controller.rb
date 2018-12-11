@@ -2,9 +2,9 @@ class PostsController < ApplicationController
   before_action :require_login, except: [:index, :user_post, :show]
 
   def index
-  @all_posts ||= Post.all
+  @posts = Post.all
     respond_to do |format|
-      format.html {  }
+      format.html { }
       format.json { render json: @all_posts  }
       format.js   {  }
     end
@@ -15,12 +15,16 @@ class PostsController < ApplicationController
   end
 
   def my_posts
-    @my_posts = Post.where(user_id: current_user)
+    @my_posts ||= Post.where(user_id: current_user)
   end
 
   def show
-    @post = Post.find(params[:id])
-        # binding.pry
+    @post ||= Post.find(params[:id])
+    respond_to do |format|
+      format.html { }
+      format.json { render json: @post }
+      format.js   {  }
+    end
   end
 
   def new
@@ -50,7 +54,7 @@ class PostsController < ApplicationController
       if @post.update(post_params)
         @post = Post.find(params[:id])
         format.html { redirect_to user_post_path(params[:user_id], params[:id]), notice: 'Post was successfully updated.' }
-        format.js {}
+        format.js { render :show }
       else
         format.html { render :edit }
       end
