@@ -2,7 +2,7 @@
   <div class="row justify-content-md-center">
     <div class="col-11">
       <h3>All user posts</h3>
-      <% @all_user_posts.each do |post| %>
+      <% @my_posts.each do |post| %>
       <h2><%= post.header %></h2>
         <p>
           <%= image_tag post.image_url(:thumb), class: 'leftimg' if post.image.present? %>

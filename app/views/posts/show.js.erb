@@ -1,22 +1,22 @@
-$("#show_post_<%= @post.id%>").hide().append('<%= j render "show" %>' ).fadeIn(400);
+$("#show_<%= @post.id%>").hide().append('<%= j render "show" %>' ).fadeIn(400);
 
 $('#header').html('<%= @post.header%>')
 
 
-$('#back_ground_layer').click(function(){
-  $(this).fadeOut(400);
-  $('#current_post<%= @post.id %>').fadeOut(400);
-});
+  // $('#back_ground_layer').click(function(){
+  //   $(this).fadeOut(400);
+  //   $('#current_post<%= @post.id %>').fadeOut(400);
+  // });
 
 
-$('#edit_post').click(function(){
-    $('#current_post<%= @post.id %>').hide();
-    $('#back_ground_layer').hide();
-});
+  // $('#edit_post').click(function(){
+  //     $('#current_post<%= @post.id %>').hide();
+  //     $('#back_ground_layer').hide();
+  // });
 
-$('#close_post').click(function(){
-    $("#current_post<%= params[:id]%>").fadeOut(400);
-    $('#back_ground_layer').fadeOut(400);
-    $('#post_preview<%= params[:id]%>').fadeIn(400);
+  // $('#close_post').click(function(){
+  //     $("#current_post<%= params[:id]%>").fadeOut(400);
+  //     $('#back_ground_layer').fadeOut(400);
+  //     $('#post_preview<%= params[:id]%>').fadeIn(400);
 
-});
+  // });

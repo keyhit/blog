@@ -14,7 +14,7 @@
     <%= link_to 'Comments',
       user_post_comments_path(@post.user_id, @post.id)%> | 
 
-    <%= link_to 'All posts', all_posts_path %>
+    <%= link_to 'All posts', root_path %>
 
     <%= link_to '| Edit post',
       edit_user_post_path(@post.user_id, @post.id),

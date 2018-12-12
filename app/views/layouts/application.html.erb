@@ -9,6 +9,8 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
+    <div id="background_shadow">sss</div>
+    <div id="background_image">background_image</div>
     <%= render template: 'layouts/navigation'%>
     <% content_for :user_data_container do %>
       <%= render template: 'layouts/user_data_container' if current_user %>
@@ -18,7 +20,6 @@
         <div class="col-2">
           <%= yield :user_data_container %>
         </div>
-
         <div class="col-10">
             <%= yield %>
         </div>

@@ -2,17 +2,14 @@ class PostsController < ApplicationController
   before_action :require_login, except: [:index, :user_post, :show]
 
   def index
-  @posts = Post.all
+  @posts ||= Post.order(created_at: :desc)
     respond_to do |format|
-      format.html { }
+      format.html
       format.json { render json: @all_posts  }
-      format.js   {  }
+      format.js
     end
   end
 
-  def all_user_posts
-    @all_user_posts ||= Post.where(user_id: params[:id])
-  end
 
   def my_posts
     @my_posts ||= Post.where(user_id: current_user)
@@ -21,29 +18,38 @@ class PostsController < ApplicationController
   def show
     @post ||= Post.find(params[:id])
     respond_to do |format|
-      format.html { }
+      format.html
       format.json { render json: @post }
-      format.js   {  }
+      format.js
     end
   end
 
   def new
-    @user = User.find(params[:user_id])
+    @user = User.find(current_user.id)
     @post = @user.posts.new
+    respond_to do |format|
+      format.html
+      format.json { render json: @post }
+      format.js
+    end
   end
 
   def edit
-    @user = User.find(params[:user_id])
+    @user = User.find(current_user.id)
     @post = @user.posts.find(params[:id])
   end
 
   def create
+    # binding.pry
     @post = Post.new(post_params)
+    @post.save
     respond_to do |format|
-      if @post.save
+      if 
         format.html { redirect_to user_post_path(params[:user_id], @post.id), notice: 'Post was successfully created.' }
+        format.js
       else
         format.html { render :new }
+        format.js
       end
     end
   end
@@ -70,7 +76,8 @@ class PostsController < ApplicationController
     end
   end
 
+
   def post_params
-    params.require(:post).permit(:header, :body, :image, :user_id)
+    params.require(:post).permit(:header, :body, :image).merge(user_id: current_user.id)
   end
 end

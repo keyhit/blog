@@ -1,29 +1,19 @@
 <% @posts.each do |post| %>
-<div id="index_post_<%= post.id%>"
-  <div  class="container">
     <div class="row">
       <div class="col-12">
         <h3 id='posts_headers'><%= post.header.to_s %></h3>
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-3">
-        <p>
-          <%= image_tag post.image_url(:thumb),
-            class: 'leftimg' if post.image.present? %>
-        </p>
-      </div>
-
-      <div class="col-9">
-        <p>
-        <%= post.body[0..440] %> ...
-        <%= link_to 'read more',
-          user_post_path( post.user_id, post.id),
-          id: "current_post#{params[:id]}",
-          remote: true %>
-        </p>
-      </div>
+    <div class="row ">
+      <% if post.image.present? %>
+        <%= render 'posts/preview_parts/image_3', post: post %>
+        <%= render 'posts/preview_parts/body_9', post: post %>
+      <% elsif post.image.blank? %>
+        <%= render 'posts/preview_parts/body_12', post: post %>
+      <% elsif post.body.blank? %>
+        <%= render 'posts/preview_parts/image_3', post: post %>
+      <% end %>
     </div>
     <div class="row">
       <div class="col-9">
@@ -39,7 +29,7 @@
         <%= link_to 'Comments', user_post_comments_path(current_user, post.id) if current_user %>
       </div>
     </div>
-  </div>
   <hr>
-<div id="show_post_<%= post.id%>"></div>
+<div id="show_<%= post.id%>">sdfsdf</div>
 <%end%>
+

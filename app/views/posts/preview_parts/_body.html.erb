@@ -1,0 +1,7 @@
+<p>
+<%= post.body[0..420] %> ...
+<%= link_to 'read more',
+  user_post_path( post.user_id, post.id),
+  id: "show_post_#{post.id}",
+  remote: true %>
+</p>
