@@ -1,17 +1,23 @@
-<h3>User data</h3>
-<p>
-  <%= image_tag( "#{current_user.avatar}",
-    alt: "Here may be you avatar",
-    height: '90%',
-    width: '90%') if current_user.avatar %>
-</p>
+<br>
+<div class="row justify-content-md-center">
+  <div class="col-12">
+    <%= image_tag( "#{current_user.avatar}",
+      alt: "Here may be you avatar",
+      height: "90%",
+      width: "90%",
+      class: "img-thumbnail") if current_user.avatar %>
 
-<p>
-  <strong>Posts:</strong>
-  <%= current_user.posts.count %>
-</p>
-
-<p>
-  <strong>Comments:</strong>
-  <%= current_user.comments.count %>
-</p>
+      <strong>Name:</strong>
+      <%= current_user.name %>
+    <br>
+      <strong>Email:</strong>
+      <%= current_user.email %>
+    <br>
+      <strong>Posts:</strong>
+      <%= current_user.posts.count %>
+    <br>
+      <strong>Comments:</strong>
+      <%= current_user.comments.count %>
+  </div>
+</div>
+<hr>
