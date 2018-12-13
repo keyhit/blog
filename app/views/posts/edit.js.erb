@@ -1,9 +1,2 @@
-$('#<%="edit_current_post#{@post.id}"%>').append('<%= j render "edit" %>');
-$('#back_ground_layer').show();
-
-// $('#post_preview<%= params[:id]%>').hide();
-
-// $('#close_current_post<%= params[:id]%>').click(function(){
-//     $('#post_preview<%= params[:id]%>').show();
-//     $('#current_post<%= params[:id]%>').fadeOut(500);
-// });
+  $('#edit_post<%= @post.id%>').hide().html('<%= j render "edit" %>').fadeIn(1000);
+// $("#post").fadeOut(1000);

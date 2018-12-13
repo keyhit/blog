@@ -48,6 +48,20 @@ p:first-child {
 }
 
 .comment_body {
-  background-color: lightgrey;
+  margin-bottom: 8px;
+  padding: 11px;
+  border-radius: 8px;
+  background-color: #f7f7f7;
 }
 
+.comment_body h3 {
+  text-align: center;
+}
+
+.comment_body img {
+  margin-left: 15%;
+  margin-right: 16%;
+}
+h3 {
+  text-align: center;
+}

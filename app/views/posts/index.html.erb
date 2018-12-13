@@ -23,7 +23,7 @@
             <%= image_tag post.image_url(:thumb),
               class: 'leftimg' if post.image.present? %>
           </div>
-
+          
           <div class="col-9">
             <p>
               <%= post.body[0..420] %> ...
@@ -72,6 +72,7 @@
         <% end %>
       </div>
 
+      <br>
       <div class="row">
         <div class="col-9">
           <div class= "user_info_below_post">
@@ -98,3 +99,4 @@
     <hr>
   </div>
 <%end%>
+

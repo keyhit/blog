@@ -1,17 +1,23 @@
+$("#post").fadeIn(1000);
 var showPost = $("#render_post_<%= @post.id %>").text().length;
 if (showPost == 0){
-  $("#render_post_<%= @post.id %>").hide().append('<%= j render "show" %>').fadeIn(700);
+  $("#render_post_<%= @post.id %>").hide().html('<%= j render "show" %>').fadeIn(1000);
 }
 else{
   $('#render_post_<%= @post.id %>').fadeIn(1000);
 }
 
-$("#post_<%= params[:id] %>").fadeOut(1);
+$("#post_<%= params[:id] %>").fadeOut(1000);
 
-$("#close_show_post ").click(function(){
+$("#close_show_post, #close_show_post_2").click(function(){
   $("#post_<%= params[:id] %>").fadeIn(1000);
   $('#render_post_<%= @post.id %>').fadeOut(1000);
 });
 
-$('#header').html('<%= @post.header %>')
-$('#body').html('<%= @post.body %>')
+$('#ajax_header').html("<%= @post.header %>");
+$('#ajax_image').html('<img src="<%= @post.image_url %>"/>');
+$('#ajax_body').html("<%= @post.body %>");
+
+$("#close_editor").click(function(){
+  $("#post_form").fadeOut(1000);
+});

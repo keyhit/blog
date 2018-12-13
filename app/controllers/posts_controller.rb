@@ -58,7 +58,7 @@ class PostsController < ApplicationController
       if @post.update(post_params)
         @post = Post.find(params[:id])
         # format.html { redirect_to user_post_path(params[:user_id], params[:id]), notice: 'Post was successfully updated.' }
-        format.js
+        format.js {render 'show'}
       else
         format.js
       end
