@@ -1,26 +1,10 @@
-<div id='<%="current_post#{@post.id}"%>'>
-  <div id="current_post_body">
-    <%= link_to "X",
-    user_posts_path(
-      @post.user_id,
-      anchor: "post_preview#{@post.id}"),
-    id: "close_post",
-    remote: true %>
-    <p>
-    <h3 id="header"></h3>
-    <%= image_tag @post.image_url, class: 'leftimg' if @post.image.present? %>
-    <p><%= @post.body%></p>
-
-    <%= link_to 'Comments',
-      user_post_comments_path(@post.user_id, @post.id)%> | 
-
-    <%= link_to 'All posts', root_path %>
-
-    <%= link_to '| Edit post',
-      edit_user_post_path(@post.user_id, @post.id),
-      id: 'edit_post',
-      remote: true if current_user  %> 
-    <%= link_to '| Destroy post', user_post_path(@post.user_id, @post.id), method: :delete if current_user  %> 
-    </p>
-  </div>
+<%#= render 'show_navigation' %>
+<div class="comment_body">
+<p>
+<h3 id="header"></h3>
+<%= image_tag @post.image_url, class: 'leftimg' if @post.image.present? %>
+<p id="body"></p>
+</p>
 </div>
+<%= render 'show_navigation' %>
+<hr>

@@ -1,0 +1,51 @@
+<% icon_size_v = "35px"%>
+<% icon_size_h = "40px"%>
+
+<%= link_to root_path(anchor: "post_#{@post.id}"),
+  remote: true,
+  id: "close_show_post",
+  title: "Back to posts" do %>
+  <%= image_tag "icons/iconfinder_left-arrow-back_2931162.png",
+  width: icon_size_v,
+  height: icon_size_h %>
+<% end %>
+
+&nbsp;&nbsp;
+
+<%= link_to user_post_comments_path(@post.user_id, @post.id), 
+  remote: true,
+  title: "Comments" do %>
+  <%= image_tag "icons/iconfinder_paste-clipboard-copy_2931174.png",
+  width: icon_size_v,
+  height: icon_size_h %>
+<% end %>
+
+&nbsp;&nbsp;
+
+<%= link_to root_path, 
+  title: "To latest posts" do %>
+  <%= image_tag "icons/iconfinder_exit-enter-leave-door-in_2931189.png",
+  width: icon_size_v,
+  height: icon_size_h %>
+<% end %>
+
+&nbsp;&nbsp;
+
+<%= link_to edit_user_post_path(@post.user_id, @post.id),
+  remote:true,
+  title: "Edit" do %>
+  <%= image_tag "icons/iconfinder_settings-gear-setup-adjust-control_2931152.png",
+    width: icon_size_v,
+    height: icon_size_h %>
+<% end if current_user %>
+
+&nbsp;&nbsp;
+
+<%= link_to user_post_path(@post.user_id, @post.id),
+  remote: true,
+  title: "Destroy",
+  method: :delete, data: {confirm: "Are you sure?"} do %>
+  <%= image_tag "icons/iconfinder_trash-delete-remove_2931168.png",
+  width: icon_size_v,
+  height: icon_size_h %>
+<% end if current_user %>

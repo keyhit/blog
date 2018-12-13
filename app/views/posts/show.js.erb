@@ -1,22 +1,17 @@
-$("#show_<%= @post.id%>").hide().append('<%= j render "show" %>' ).fadeIn(400);
+var showPost = $("#render_post_<%= @post.id %>").text().length;
+if (showPost == 0){
+  $("#render_post_<%= @post.id %>").hide().append('<%= j render "show" %>').fadeIn(700);
+}
+else{
+  $('#render_post_<%= @post.id %>').fadeIn(1000);
+}
 
-$('#header').html('<%= @post.header%>')
+$("#post_<%= params[:id] %>").fadeOut(1);
 
+$("#close_show_post ").click(function(){
+  $("#post_<%= params[:id] %>").fadeIn(1000);
+  $('#render_post_<%= @post.id %>').fadeOut(1000);
+});
 
-  // $('#back_ground_layer').click(function(){
-  //   $(this).fadeOut(400);
-  //   $('#current_post<%= @post.id %>').fadeOut(400);
-  // });
-
-
-  // $('#edit_post').click(function(){
-  //     $('#current_post<%= @post.id %>').hide();
-  //     $('#back_ground_layer').hide();
-  // });
-
-  // $('#close_post').click(function(){
-  //     $("#current_post<%= params[:id]%>").fadeOut(400);
-  //     $('#back_ground_layer').fadeOut(400);
-  //     $('#post_preview<%= params[:id]%>').fadeIn(400);
-
-  // });
+$('#header').html('<%= @post.header %>')
+$('#body').html('<%= @post.body %>')
