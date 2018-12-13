@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   def index
     @posts ||= Post.order(created_at: :desc)
     respond_to do |format|
-      format.html
+      format.html {  }
       format.json { render json: @index }
       format.js
     end
@@ -17,7 +17,7 @@ class PostsController < ApplicationController
   def show
     @post ||= Post.find(params[:id])
     respond_to do |format|
-      format.html { redirect_to user_post_path(params[:user_id], params[:id]) }
+      format.html {  }
       format.json { render json: @post }
       format.js
     end
@@ -27,7 +27,7 @@ class PostsController < ApplicationController
     @user = User.find(current_user.id)
     @post = @user.posts.new
     respond_to do |format|
-      format.html
+      format.html {  }
       format.js
     end
   end
@@ -36,7 +36,7 @@ class PostsController < ApplicationController
     @user = User.find(current_user.id)
     @post = @user.posts.find(params[:id])
     respond_to do |format|
-      format.html
+      format.html {  }
       format.js
     end
   end
@@ -57,7 +57,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.update(post_params)
         @post = Post.find(params[:id])
-        # format.html { redirect_to user_post_path(params[:user_id], params[:id]), notice: 'Post was successfully updated.' }
+        format.html {  }
         format.js {render 'show'}
       else
         format.js
