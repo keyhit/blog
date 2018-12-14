@@ -4,20 +4,25 @@ class PostsController < ApplicationController
   def index
     @posts ||= Post.order(created_at: :desc)
     respond_to do |format|
-      format.html {  }
+      format.html
       format.json { render json: @index }
       format.js
     end
   end
 
   def my_posts
-    @my_posts ||= Post.where(user_id: current_user)
+    @posts ||= Post.where(user_id: current_user)
+    respond_to do |format|
+      format.html
+      format.json { render json: @index }
+      format.js
+    end
   end
 
   def show
     @post ||= Post.find(params[:id])
     respond_to do |format|
-      format.html {  }
+      format.html
       format.json { render json: @post }
       format.js
     end

@@ -17,7 +17,7 @@ $("#close_show_post, #close_show_post_2").click(function(){
 
 $('#ajax_header').html('<%= @post.header %>');
 $('#ajax_image').html('<img src="<%= @post.image_url %>"/>');
-$('#ajax_body').prepend('&nbsp;');
+$('#ajax_body').before('&nbsp;');
 $('#ajax_body').html('<%= @post.body.to_s.html_safe %>');
 
 

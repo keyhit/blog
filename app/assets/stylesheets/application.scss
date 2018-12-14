@@ -65,3 +65,8 @@ p:first-child {
 h3 {
   text-align: center;
 }
+
+#github_logo:hover {
+    filter: invert(100%);
+}
+
