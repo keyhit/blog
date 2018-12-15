@@ -5,7 +5,6 @@ class PostsController < ApplicationController
     @posts ||= Post.order(created_at: :desc)
     respond_to do |format|
       format.html
-      format.json { render json: @index }
       format.js
     end
   end
@@ -14,7 +13,6 @@ class PostsController < ApplicationController
     @posts ||= Post.where(user_id: current_user)
     respond_to do |format|
       format.html
-      format.json { render json: @index }
       format.js
     end
   end
@@ -23,7 +21,6 @@ class PostsController < ApplicationController
     @post ||= Post.find(params[:id])
     respond_to do |format|
       format.html
-      format.json { render json: @post }
       format.js
     end
   end
@@ -32,7 +29,7 @@ class PostsController < ApplicationController
     @user = User.find(current_user.id)
     @post = @user.posts.new
     respond_to do |format|
-      format.html {  }
+      format.html
       format.js
     end
   end
@@ -41,7 +38,7 @@ class PostsController < ApplicationController
     @user = User.find(current_user.id)
     @post = @user.posts.find(params[:id])
     respond_to do |format|
-      format.html {  }
+      format.html
       format.js
     end
   end
@@ -62,7 +59,6 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.update(post_params)
         @post = Post.find(params[:id])
-        format.html {  }
         format.js {render 'show'}
       else
         format.js
@@ -75,8 +71,6 @@ class PostsController < ApplicationController
     @post.destroy
     respond_to do |format|
       format.html { redirect_to root_path, notice: 'Post was successfully destroyed.' }
-      # format.json { head :no_content }
-      # format.js
     end
   end
 

@@ -6,6 +6,14 @@ class CommentsController < ApplicationController
     @post_comment ||= Comment.where(post_id: params[:post_id])
   end
 
+  def post_comments
+    @post_comments ||= Comment.all
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
   def user_comments
     @user_comment ||= Comment.where(user_id: params[:id])
   end

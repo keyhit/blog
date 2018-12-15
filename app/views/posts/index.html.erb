@@ -87,13 +87,16 @@
         <div class="col-3">
           <%#= link_to 'Comments', user_post_comments_path(current_user, post.id) if current_user %>
 
-          <%= link_to user_post_comments_path(post.user_id, post.id), 
+          <%= link_to user_post_comments_path(post.id, post.id),
             remote: true,
             title: "comments" do %>
             <%= image_tag "icons/iconfinder_paste-clipboard-copy_2931174.png",
             width: "35px",
             height: "40px" %>
-          <% end  if current_user %>
+            <%= "(#{post.comments.count})" %>
+          <% end  if current_user && post.comments.present? %>
+          <%#= binding.pry %>
+          <%#= post.comments.each{ |c| c.text }%>
         </div>
       </div>
     <hr>
