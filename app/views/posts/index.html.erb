@@ -26,7 +26,7 @@
           
           <div class="col-9">
             <p>
-              <%= post.body[0..420] %> ...
+              <%= post.body[0..420] %>
               <%#= link_to 'read more',
                 user_post_path( post.user_id, post.id),
                 id: "show_post_#{post.id}",
@@ -36,9 +36,10 @@
                 remote: true,
                 title: "reed more",
                 id: "show_post_#{post.id}" do %>
+                ... red more
                 <%= image_tag "icons/iconfinder_right-forward-arrow_2931159.png",
-                width: "30px",
-                height: "35px" %>
+                  width: icon_size_v,
+                  height: icon_size_h %>
               <% end %>
             </p>
           </div>
@@ -46,7 +47,7 @@
         <% elsif post.image.blank? %>
           <div class="col-12">
             <p>
-              <%= post.body[0..420] %> ...
+              <%= post.body[0..420] %>
               <%#= link_to 'read more',
                 user_post_path( post.user_id, post.id),
                 id: "show_post_#{post.id}",
@@ -56,9 +57,10 @@
                 remote: true,
                 title: "reed more",
                 id: "show_post_#{post.id}" do %>
+                ... red more
                 <%= image_tag "icons/iconfinder_right-forward-arrow_2931159.png",
-                width: "30px",
-                height: "35px" %>
+                  width: icon_size_v,
+                  height: icon_size_h%>
               <% end %>
 
             </p>
@@ -87,18 +89,18 @@
         <div class="col-3">
           <%#= link_to 'Comments', user_post_comments_path(current_user, post.id) if current_user %>
 
-          <%= link_to user_post_comments_path(post.id, post.id),
+          <%= link_to post_comments_path(post.id),
             remote: true,
             title: "comments" do %>
             <%= image_tag "icons/iconfinder_paste-clipboard-copy_2931174.png",
-            width: "35px",
-            height: "40px" %>
-            <%= "(#{post.comments.count})" %>
-          <% end  if current_user && post.comments.present? %>
-          <%#= binding.pry %>
-          <%#= post.comments.each{ |c| c.text }%>
+              width: icon_size_v,
+              height: icon_size_h %>
+            <%= "(#{post.comments.count})" if post.comments%>
+          <% end %>
         </div>
       </div>
+      <div id="post_comments_<%= post.id %>"></div>
     <hr>
   </div>
 <%end%>
+

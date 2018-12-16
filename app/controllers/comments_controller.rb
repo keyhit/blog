@@ -1,16 +1,28 @@
 class CommentsController < ApplicationController
-  before_action :require_login, except: [:index]
-  # binding.pry
+  before_action :require_login, except: %i[index post_comments]
 
   def index
-    @post_comment ||= Comment.where(post_id: params[:post_id])
+    @comments ||= Comment.all
+  end
+
+  def user_comments
+    @user_comments ||= Comments.find(params[:id])
+    respond_to do |format|
+      format.js
+    end
   end
 
   def post_comments
-    @post_comments ||= Comment.all
+    @post_comments ||= Comment.where(post_id: params[:id]).order(created_at: :desc)
     respond_to do |format|
       format.html
       format.js
+    end
+
+    if current_user.present?
+      @user = current_user
+      @post = current_user.posts.find(params[:id])
+      @comment = Comment.new
     end
   end
 
@@ -21,9 +33,7 @@ class CommentsController < ApplicationController
   def show; end
 
   def new
-    @user = User.find(params[:user_id])
-    @post = @user.posts.find(params[:post_id])
-    @comment = Comment.new
+
   end
 
   def edit
@@ -36,11 +46,14 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to user_post_comments_path(params[:user_id], params[:post_id], params[:id]), notice: 'Comment was successfully created.' }
+        format.html
+        format.js
       else
-        format.html { render :new }
+        format.html
+        format.js
       end
     end
+    @last_comment = Comment.where(post_id: params[:post_id]).last
   end
 
   def update

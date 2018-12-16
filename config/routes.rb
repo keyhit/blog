@@ -7,7 +7,6 @@ Rails.application.routes.draw do
 
   root 'posts#index'
   get 'index', to: 'posts#index', as: 'index'
-  # get 'all_user_posts/:id', to: 'posts#all_user_posts', as: 'all_user_posts'
   get 'my_posts', to: 'posts#my_posts', as: 'my_posts'
   get 'user_comments/:id', to: 'comments#user_comments', as: 'user_comments'
   get 'post_comments/:id', to: 'comments#post_comments', as: 'post_comments'

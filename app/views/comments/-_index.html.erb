@@ -1,0 +1,25 @@
+<h3>Comments</h3>
+
+  <% @comments.each do |comment| %>
+  <hr>
+    <section class= "user_info_below_post">
+    Commenter: 
+    <%= comment.user.name %>
+    <%= image_tag comment.user.avatar_url(:thumb), class: 'leftimg' if comment.user.avatar.present? %>
+    Commented: 
+    <%= comment.user.created_at.to_s[0..15] %>
+    Changed:
+    <%= comment.user.updated_at.to_s[0..15] %>
+  </section>
+    <%= comment.text %>
+    <br>
+    <%= link_to 'Edit', edit_user_post_comment_path(params[:user_id], params[:post_id], comment.id) %>  |  
+    <%= link_to 'Drop', user_post_comment_path(params[:user_id], params[:post_id], comment.id), method: :delete %>
+
+  <% end %>
+<p>
+  </br>
+  <%#= link_to 'New comment', new_user_post_comment_path(params[:user_id], params[:post_id]) %> |
+  <%= link_to 'All posts', root_path %> |
+  <%#= link_to 'Back to post', user_post_path(params[:user_id], params[:post_id]) %>
+</p>

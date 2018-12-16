@@ -2,6 +2,16 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :require_login
 
+  def icon_size_v
+    @icon_size_v = "18px"
+  end
+  helper_method :icon_size_v
+
+  def icon_size_h
+    @icon_size_h = "18px"
+  end
+  helper_method :icon_size_h
+
   private
 
   def require_login

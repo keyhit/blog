@@ -5,12 +5,11 @@ class PostsController < ApplicationController
     @posts ||= Post.order(created_at: :desc)
     respond_to do |format|
       format.html
-      format.js
     end
   end
 
   def my_posts
-    @posts ||= Post.where(user_id: current_user)
+    @posts ||= Post.where(user_id: current_user).order(created_at: :desc)
     respond_to do |format|
       format.html
       format.js
