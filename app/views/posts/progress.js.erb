@@ -20,6 +20,19 @@
 
 
 
+@(document).append('<%= j render 'new' if current_user %>');
+<%= link_to index_path,
+
+  title: "Close comments",
+  id: "close_post_comments" do %>
+  <%= image_tag "icons/iconfinder_exit-delete-remove-close-x_2931151.png",
+  width: icon_size_v,
+  height: icon_size_h %>
+<% end if @post_comments %>
+
+<%#= render 'new' if current_user %>
+<br>
+<div id="last_comment_post_<%= @post.id %>"></div>
 
 
 

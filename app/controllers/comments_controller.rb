@@ -17,7 +17,9 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.html
       format.js
+      format.json  { render json: @post_comments }
     end
+
 
     if current_user.present?
       @user = current_user
@@ -44,16 +46,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
-    respond_to do |format|
-      if @comment.save
-        format.html
-        format.js
-      else
-        format.html
-        format.js
-      end
-    end
-    @last_comment = Comment.where(post_id: params[:post_id]).last
+      @comment.save
   end
 
   def update
@@ -73,6 +66,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to user_post_comments_path(params[:user_id], params[:post_id], params[:id]), notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
+      format.js
     end
   end
 

@@ -1,6 +1,12 @@
 var showPost = $("#post_comments_<%= @post.id %>").text().length;
 if (showPost == 0){
-  $("#post_comments_<%= @post.id %>").hide().html('<%= j render 'post_comments' %>').fadeIn(1000);
+  $("#post_comments_<%= @post.id %>").hide().append('<%= j render "post_comments" %>').fadeIn(1000);
+  $('#post_comments_<%= @post.id %>').before('<%= j render "navigation" %>')
+  $('#post_comments_<%= @post.id %>').prepend('<%= j render 'new' if current_user %>')
+
+
+
+
 }
 else{
   $('#post_comments_<%= @post.id %>').fadeIn(1000);
@@ -9,3 +15,4 @@ else{
 $('#close_post_comments').click(function(){
   $("#post_comments_<%= @post.id %>").fadeOut(1000);
 })
+

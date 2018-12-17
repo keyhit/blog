@@ -5,6 +5,7 @@ class PostsController < ApplicationController
     @posts ||= Post.order(created_at: :desc)
     respond_to do |format|
       format.html
+      format.json
     end
   end
 
@@ -21,6 +22,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html
       format.js
+      format.json { render json: @post }
     end
   end
 

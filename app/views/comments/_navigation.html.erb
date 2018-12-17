@@ -1,0 +1,8 @@
+<%= link_to index_path,
+  title: "Close comments",
+  id: "close_post_comments" do %>
+  <%= image_tag "icons/iconfinder_exit-delete-remove-close-x_2931151.png",
+  width: icon_size_v,
+  height: icon_size_h %>
+<% end if @post_comments %>
+

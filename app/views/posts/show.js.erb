@@ -1,7 +1,7 @@
 $("#post").fadeIn(1000);
 var showPost = $("#render_post_<%= @post.id %>").text().length;
 if (showPost == 0){
-  $("#render_post_<%= @post.id %>").hide().html('<%= j render "show" %>').fadeIn(1000);
+  $("#render_post_<%= @post.id %>").hide().append('<%= j render "show" %>').fadeIn(1000);
 }
 else{
   $('#render_post_<%= @post.id %>').fadeIn(1000);
@@ -18,7 +18,9 @@ $("#close_show_post, #close_show_post_2").click(function(){
 $('#ajax_header').html('<%= @post.header %>');
 $('#ajax_image').html('<img src="<%= @post.image_url %>"/>');
 $('#ajax_body').before('&nbsp;');
-$('#ajax_body').html('<%= "#{@post.body}" %>');
+
+
+$('#body').html("<%= j @post.body %>");
 
 
 $("#close_editor").click(function(){
