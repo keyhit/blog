@@ -1,11 +1,10 @@
-<div id="show_post"></div>
+  <div id="show_post"></div>
 
 <div class="row">
   <div class="col-12 new_post_form">
     <div id="new_post"></div>
   </div>
 </div>
-
 <% @posts.each do |post| %>
   <div class="row">
     <div class="col-12 new_post_form">
@@ -82,22 +81,22 @@
           <div class= "user_info_below_post">
             Created by <i><b><%= post.user.name %> 
               <%= image_tag post.user.avatar_url(:thumb) if post.user.avatar.present? %></b></i>
-              <%= post.created_at.to_s[0..15]%>.
+              <%= post.created_at.strftime("%H:%M:%S %-d.%-m.%Y") %>.
               Updated
-                <%= post.updated_at.to_s[0..15]%>.
+                <%= post.updated_at.strftime("%H:%M:%S %-d.%-m.%Y")%>.
           </div>
         </div>
 
         <div class="col-3">
           <%#= link_to 'Comments', user_post_comments_path(current_user, post.id) if current_user %>
 
-          <%= link_to post_comments_path(post.id),
+          <%= link_to post_comments_path(id: post.id),
             remote: true,
             title: "comments" do %>
             <%= image_tag "icons/iconfinder_paste-clipboard-copy_2931174.png",
               width: icon_size_v,
               height: icon_size_h %>
-            <%= "(#{post.comments.count})" if post.comments%>
+            <%= "(#{post.comments.count})" if post.comments %>
           <% end %>
         </div>
       </div>
@@ -105,4 +104,3 @@
     <hr>
   </div>
 <%end%>
-

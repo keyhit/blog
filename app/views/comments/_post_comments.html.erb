@@ -1,16 +1,44 @@
-<div id ="b"></div>
-<div id ="a"></div>
+<!-- <div id="comment1"></div> -->
+<!-- <div id="comment"></div> -->
+
+<div id="comments_place"></div>
+
+
+
 <% @post_comments.each do |post_comment| %>
-<%= post_comment.text %>
-<%= post_comment.created_at %>
-<br>
-comented by:
-<b><%=  post_comment.user.name %></b>
-action:
-<%= link_to 'Delete',
- post_comment_delete_path(post_comment.id),
-  remote: true,
-  method: :delete,
-  data: { confirm: 'Are you sure?' } %>
-</p>
+<div class="comment">
+  <div class="comment_avatar">
+    <%= image_tag post_comment.user.avatar_url(:thumb) if post_comment.user.avatar.present? %>
+  </div>
+
+  <div class="comment_created_at_and_by">
+    <%= post_comment.created_at.strftime("%H:%M:%S %-d.%-m.%Y") %> by: <b><%=  post_comment.user.name %></b>
+  </div>
+
+  <div class="comment_text">
+    <%= post_comment.text %>
+  </div>
+
+  <div class="delete_comment">
+    <%= link_to 'Delete',
+     post_comment_delete_path(post_comment.id),
+      remote: true,
+      method: :delete,
+      data: { confirm: 'Are you sure?' } %>
+  </div>
+</div>
 <% end %>
+<div id ="end_comments"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+

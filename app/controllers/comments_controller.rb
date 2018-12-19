@@ -14,18 +14,18 @@ class CommentsController < ApplicationController
 
   def post_comments
     @post_comments ||= Comment.where(post_id: params[:id]).order(created_at: :desc)
+# binding.pry
+  @p = @post_comments.map { |k| { id: k.id, text: k.text, avatar: k.user.avatar.versions[:thumb].url, created_at: k.created_at } }
     respond_to do |format|
       format.html
       format.js
-      format.json  { render json: @post_comments }
+      format.json  { render json: @p }
     end
 
 
-    if current_user.present?
       @user = current_user
-      @post = current_user.posts.find(params[:id])
+      @post = Post.find(params[:id])
       @comment = Comment.new
-    end
   end
 
   def user_comments
@@ -46,7 +46,11 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
-      @comment.save
+    @comment.save
+    respond_to do |format|
+      format.html 
+      format.js 
+    end
   end
 
   def update
@@ -65,8 +69,7 @@ class CommentsController < ApplicationController
     @comment.destroy
     respond_to do |format|
       format.html { redirect_to user_post_comments_path(params[:user_id], params[:post_id], params[:id]), notice: 'Comment was successfully destroyed.' }
-      format.json { head :no_content }
-      format.js
+      format.js { render :post_comments}
     end
   end
 

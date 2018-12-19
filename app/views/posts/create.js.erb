@@ -1,8 +1,9 @@
 $('#new_post').hide()
-location.reload()
-$('#show_post').append("<%= j render 'show'%>");
+$('#show_post').append("<%= j render 'show' %>");
 
-$('#ajax_header').html('<%= @post.header %>');
+
+$('#ajax_header').html('<%= j @post.header %>');
 $('#ajax_image').html('<img src="<%= @post.image_url %>"/>');
 $('#ajax_body').before('&nbsp;');
-$('#ajax_body').html("<%= @post.body %>");
+$('#ajax_body').html("<%= j @post.body %>");
+location.reload()

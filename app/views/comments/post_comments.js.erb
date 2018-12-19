@@ -1,18 +1,37 @@
 var showPost = $("#post_comments_<%= @post.id %>").text().length;
 if (showPost == 0){
-  $("#post_comments_<%= @post.id %>").hide().append('<%= j render "post_comments" %>').fadeIn(1000);
+  $("#post_comments_<%= @post.id %>").hide().append('<%= j render "post_comments" %>').fadeIn("slow");
   $('#post_comments_<%= @post.id %>').before('<%= j render "navigation" %>')
+  $('#end_comments').html('<%= j render "navigation" %>')
   $('#post_comments_<%= @post.id %>').prepend('<%= j render 'new' if current_user %>')
-
-
-
-
 }
 else{
-  $('#post_comments_<%= @post.id %>').fadeIn(1000);
+  $('#post_comments_<%= @post.id %>').fadeIn("slow");
 }
 
 $('#close_post_comments').click(function(){
-  $("#post_comments_<%= @post.id %>").fadeOut(1000);
+  $("#post_comments_<%= @post.id %>").fadeOut("slow");
 })
 
+var paramId = '<%= j params[:id]%>';
+$.ajax({ 
+    url: 'http://localhost:3000/post_comments/' + paramId, 
+    // data: { id: paramId }, 
+    dataType: 'json',
+    success: function (data) { 
+
+
+        data.forEach(function(e){
+          $('#comments_place').prepend(
+            '<div class="comment">',
+            '<div class="comment_avatar"><img src="'+ e.avatar +'"></div>',
+            '<div id="comment_created_at_and_by">'+ e.created_at + '</div>',
+            '<div id="comment_text">' + e.text + '</div>',
+            '</div>');
+        console.log(data)
+    })
+      }
+});
+
+
+//старовойт 050-367-76-33
