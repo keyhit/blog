@@ -2,6 +2,13 @@ class PostsController < ApplicationController
   before_action :require_login, except: %w[index show]
 
   def index
+#     binding.pry
+
+#     CommentsChannel.broadcast_to(
+#   current_user,
+#   title: 'New things!',
+#   body: 'All the news fit to print'
+# )
     @posts ||= Post.order(created_at: :desc)
     respond_to do |format|
       format.html
@@ -81,3 +88,5 @@ class PostsController < ApplicationController
     params.require(:post).permit(:header, :body, :image).merge(user_id: current_user.id)
   end
 end
+
+

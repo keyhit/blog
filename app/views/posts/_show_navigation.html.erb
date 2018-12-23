@@ -11,14 +11,17 @@
 
 &nbsp;&nbsp;
 
-<%= link_to post_comments_path(@post.id),
+
+
+<%= link_to user_post_comments_path(user_id: @post.user_id, post_id: @post.id),
   remote: true,
-  title: "Comments" do %>
-  <%= image_tag "icons/iconfinder_paste-clipboard-copy_2931174.png",
+  title: "comments" do %>
+<%= image_tag "icons/iconfinder_paste-clipboard-copy_2931174.png",
   width: icon_size_v,
   height: icon_size_h %>
-  <%= "(#{@post.comments.count})" if @post.comments%>
-<% end if @post.comments.present? %>
+<em id="post_coments_icon_<%= @post.id %>"><%= @post.comments.count   if @post.comments.present? %>
+</em>
+<% end %>
 
 &nbsp;&nbsp;
 

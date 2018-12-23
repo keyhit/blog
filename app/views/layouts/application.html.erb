@@ -15,39 +15,13 @@
     <% content_for :user_data_container do %>
       <%= render template: 'layouts/user_data_container' if current_user %>
     <% end %>
-
-<!--           <id class="comment">
-            <div class="comment_avatar">
-              <img src="/uploads/user/avatar/1/thumb_Screenshot_from_2018-11-02_09-44-29.png">
-            </div>
-
-            <div class="comment_created_at_and_by">
-              2018-12-17 22:37:41 UTC by: <b>slava1</b>
-            </div>
-
-            <id class="comment_text">
-              sdfsdfsdf action: Delete 
-
-            </div>
-
-            <id class="delete_comment">
-              <a href="http://localhost:3000/post_comment_delete/4"> delete</a>
-            </id>
-          </id> -->
-
-    
     <div class="container">
       <div class="row">
         <div class="col-2">
           <%= yield :user_data_container %>
+          
         </div>
         <div class="col-10">
-
-
-
-          
-
-
             <%= yield %>
         </div>
       </div>

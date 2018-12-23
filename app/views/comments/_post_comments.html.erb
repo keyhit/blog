@@ -1,9 +1,6 @@
-<!-- <div id="comment1"></div> -->
-<!-- <div id="comment"></div> -->
+<div id='new_post_form'></div>
 
-<div id="comments_place"></div>
-
-
+<div id="comment_<%= @post_comments.last.id %>"></div>
 
 <% @post_comments.each do |post_comment| %>
 <div class="comment">

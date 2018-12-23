@@ -5,6 +5,7 @@
     <div id="new_post"></div>
   </div>
 </div>
+<div class="user_vertical_divider"></div>
 <% @posts.each do |post| %>
   <div class="row">
     <div class="col-12 new_post_form">
@@ -49,11 +50,6 @@
           <div class="col-12">
             <p>
               <%= post.body[0..420] %>
-              <%#= link_to 'read more',
-                user_post_path( post.user_id, post.id),
-                id: "show_post_#{post.id}",
-                remote: true %>
-
               <%= link_to user_post_path( post.user_id, post.id), 
                 remote: true,
                 title: "reed more",
@@ -88,19 +84,21 @@
         </div>
 
         <div class="col-3">
-          <%#= link_to 'Comments', user_post_comments_path(current_user, post.id) if current_user %>
-
-          <%= link_to post_comments_path(id: post.id),
+          <%= link_to user_post_comments_path(user_id: post.user_id, post_id: post.id),
             remote: true,
             title: "comments" do %>
             <%= image_tag "icons/iconfinder_paste-clipboard-copy_2931174.png",
               width: icon_size_v,
               height: icon_size_h %>
-            <%= "(#{post.comments.count})" if post.comments %>
+            <em id="post_coments_icon_<%= post.id %>"><%= post.comments.count if post.comments %>
+            </em>
           <% end %>
         </div>
       </div>
+      <div id="before_close_comments_<%= post.id %>"></div>
+      <div id="form_comments_<%= post.id %>"></div>
       <div id="post_comments_<%= post.id %>"></div>
+      <div id="after_close_comments_<%= post.id %>"></div>
     <hr>
   </div>
 <%end%>
