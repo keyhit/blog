@@ -11,9 +11,9 @@
 <div id="post">
   <div class="comment_body">
     <p>
-    <h3 id="ajax_header"></h3>
-    <p id="ajax_image"></p>
-    <p id="ajax_body"></p>
+    <h3 id="ajax_header"><%= @post.header%></h3>
+    <p id="ajax_image"><%= image_tag @post.image_url, class: 'leftimg' if @post.image.present? %></p>
+    <p id="ajax_body"><%= @post.body%></p>
 
     <!-- http request data -->
     <h3 id="header"><%#= @post.header%></h3>

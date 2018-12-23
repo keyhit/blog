@@ -2,13 +2,6 @@ class PostsController < ApplicationController
   before_action :require_login, except: %w[index show]
 
   def index
-#     binding.pry
-
-#     CommentsChannel.broadcast_to(
-#   current_user,
-#   title: 'New things!',
-#   body: 'All the news fit to print'
-# )
     @posts ||= Post.order(created_at: :desc)
     respond_to do |format|
       format.html
@@ -67,7 +60,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.update(post_params)
         @post = Post.find(params[:id])
-        format.js {render 'show'}
+        format.js { render :show }
       else
         format.js
       end
