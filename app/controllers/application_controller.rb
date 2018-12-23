@@ -24,7 +24,16 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def posts_comments(params)
-    @posts_comments ||= Comment.where(params) 
+    @posts_comments ||= Comment.where(params)
   end
   helper_method :posts_comments
+
+  def chesck_owner
+    # binding.pry
+    unless current_user.id.to_i == params[:user_id].to_i
+      p 'current_user = user_id'
+      redirect_to root_path
+    end
+  end
+  helper_method :chesck_owner
 end

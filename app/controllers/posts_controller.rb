@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :require_login, except: %w[index show]
+  before_action :chesck_owner, only: %w[edit destroy]
 
   def index
     @posts ||= Post.order(created_at: :desc)

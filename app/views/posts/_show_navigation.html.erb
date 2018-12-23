@@ -40,7 +40,7 @@
   <%= image_tag "icons/iconfinder_settings-gear-setup-adjust-control_2931152.png",
     width: icon_size_v,
     height: icon_size_h %>
-<% end if current_user %>
+<% end if current_user.id == @post.user_id %>
 
 &nbsp;&nbsp;
 
@@ -51,4 +51,4 @@
   <%= image_tag "icons/iconfinder_trash-delete-remove_2931168.png",
   width: icon_size_v,
   height: icon_size_h %>
-<% end if current_user %>
+<% end if current_user.id == @post.user_id %>
