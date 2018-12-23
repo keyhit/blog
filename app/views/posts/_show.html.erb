@@ -12,6 +12,13 @@
   <div class="comment_body">
     <p>
     <h3 id="ajax_header"><%= @post.header%></h3>
+
+    <p id="ajax_youtube">
+      <% if @post.youtube.present? %> 
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @post.youtube[32..-1] %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <% end %>
+    </p>
+
     <p id="ajax_image"><%= image_tag @post.image_url, class: 'leftimg' if @post.image.present? %></p>
     <p id="ajax_body"><%= @post.body%></p>
 
@@ -33,5 +40,3 @@
   <div id="after_close_comments_<%= @post.id %>"></div>
 </p>
 <hr>
-
-

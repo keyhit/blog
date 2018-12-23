@@ -15,7 +15,10 @@
   <% end %>
     <%= form.text_field :header %>
     <%= form.file_field :image %>
+    Copy youtube link in browser address line and paste here
+    <%= form.text_field :youtube %>
     <%= form.text_area :body, cols: 50, rows: 5 %>
+    <%= form.check_box :published %>
     <%= form.submit %>
 
     <%= link_to 'Close editor',

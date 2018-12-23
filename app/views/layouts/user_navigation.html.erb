@@ -1,6 +1,13 @@
 <li class="nav-item">
-  <%= link_to 'My posts',
+  <%= link_to 'Published',
    my_posts_url,
+   id: "my_posts",
+   class: 'nav-link' %>
+</li>
+
+<li class="nav-item">
+  <%= link_to 'Drafts',
+   my_draft_url,
    id: "my_posts",
    class: 'nav-link' %>
 </li>

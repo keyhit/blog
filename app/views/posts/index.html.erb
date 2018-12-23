@@ -19,20 +19,24 @@
         </div>
       </div>
 
+      <div class="row">
+        <% if post.youtube.present? %>
+          <div class="col-3">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= post.youtube[32..-1] %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      <% end %>
+      </div>
+
       <div class="row ">
         <% if post.image.present? %>
           <div class="col-3">
             <%= image_tag post.image_url(:thumb),
               class: 'leftimg' if post.image.present? %>
           </div>
-          
+
           <div class="col-9">
             <p>
               <%= post.body[0..420] %>
-              <%#= link_to 'read more',
-                user_post_path( post.user_id, post.id),
-                id: "show_post_#{post.id}",
-                remote: true %>
 
              <%= link_to user_post_path(post.user_id, post.id), 
                 remote: true,
@@ -101,4 +105,4 @@
       <div id="after_close_comments_<%= post.id %>"></div>
     <hr>
   </div>
-<%end%>
+<% end %>

@@ -15,6 +15,8 @@ $("#close_show_post, #close_show_post_2").click(function(){
 
 if ('<%= params[:commit] %>' == "Update Post")
 {
+    $('#ajax_header').replaceWith('<p id="ajax_youtube"><% if @post.youtube.present? %><iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @post.youtube[32..-1] %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><% end %></p>');
+
     $('#ajax_header').replaceWith('<h3 id="ajax_header"><%= j @post.header %></h3>');
     $('#ajax_image').replaceWith('<p id="ajax_image"><img src="<%= @post.image_url %>"/></p>');
     $('#ajax_body').replaceWith('<p id="ajax_body">&nbsp;&nbsp;<%= j @post.body %></p>');

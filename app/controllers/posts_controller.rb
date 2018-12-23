@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :chesck_owner, only: %w[edit destroy]
 
   def index
-    @posts ||= Post.order(created_at: :desc)
+    @posts ||= Post.where(published: true).order(created_at: :desc)
     respond_to do |format|
       format.html
       format.json
@@ -11,7 +11,15 @@ class PostsController < ApplicationController
   end
 
   def my_posts
-    @posts ||= Post.where(user_id: current_user).order(created_at: :desc)
+    @posts ||= Post.where(user_id: current_user, published: true).order(created_at: :desc)
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+    def my_draft
+    @posts ||= Post.where(user_id: current_user, published: false).order(created_at: :desc)
     respond_to do |format|
       format.html
       format.js
@@ -79,7 +87,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:header, :body, :image).merge(user_id: current_user.id)
+    params.require(:post).permit(:header, :body, :image, :published, :youtube).merge(user_id: current_user.id)
   end
 end
 
