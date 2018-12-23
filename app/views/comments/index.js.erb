@@ -1,0 +1,9 @@
+console.log('index comments')
+$('#form_comments_<%= params[:post_id] %>').hide().html('<%= j render "form" %>').fadeIn("slow");
+$('#post_comments_<%= params[:post_id] %>').hide().html('<%= j render partial: "index", collection: @comments, as: :comment %>').hide().fadeIn("slow");
+$('#before_close_comments_<%= params[:post_id] %>').hide().html('<%= j render "navigation" %>').fadeIn("slow");
+$('#after_close_comments_<%= params[:post_id] %>').hide().html('<%= j render "navigation" %>').fadeIn("slow");
+
+$('#post_coments_icon_<%= params[:post_id] %>'). replaceWith(
+    '<em id="post_coments_icon_<%= params[:post_id] %>"><%= @comments.count %></em>'
+);

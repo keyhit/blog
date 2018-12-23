@@ -1,39 +1,56 @@
 class PostsController < ApplicationController
-  before_action :require_login, except: [:index, :user_post, :show]
+  before_action :require_login, except: %w[index show]
 
   def index
-  @all_posts = Post.all
-  end
-
-  def all_user_posts
-    @all_user_posts = Post.where(user_id: params[:id])
+    @posts ||= Post.order(created_at: :desc)
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def my_posts
-    @my_posts = Post.where(user_id: current_user)
+    @posts ||= Post.where(user_id: current_user).order(created_at: :desc)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post ||= Post.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.js
+      format.json { render json: @post }
+    end
   end
 
   def new
-    @user = User.find(params[:user_id])
+    @user = User.find(current_user.id)
     @post = @user.posts.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def edit
-    @user = User.find(params[:user_id])
+    @user = User.find(current_user.id)
     @post = @user.posts.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create
     @post = Post.new(post_params)
     respond_to do |format|
       if @post.save
-        format.html { redirect_to user_post_path(params[:user_id], @post.id), notice: 'Post was successfully created.' }
+        format.js
       else
-        format.html { render :new }
+        format.js
       end
     end
   end
@@ -42,9 +59,10 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to user_post_path(params[:user_id], params[:id]), notice: 'Post was successfully updated.' }
+        @post = Post.find(params[:id])
+        format.js { render :show }
       else
-        format.html { render :edit }
+        format.js
       end
     end
   end
@@ -53,12 +71,15 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to all_posts_path, notice: 'Post was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to root_path, notice: 'Post was successfully destroyed.' }
     end
   end
 
+  private
+
   def post_params
-    params.require(:post).permit(:header, :body, :image).merge(user_id: params[:user_id])
+    params.require(:post).permit(:header, :body, :image).merge(user_id: current_user.id)
   end
 end
+
+

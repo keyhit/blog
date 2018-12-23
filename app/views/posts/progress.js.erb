@@ -1,0 +1,50 @@
+// $('.actions').on('ajax:beforeSend', (event, xhr, settings), function() {
+//   settings.url += ('?page=' + window.progressPage)
+// });
+
+
+
+// window.progressPage +=1;
+// $('.progress').append("<%= j render partial: 'xx', collection: @xx, as: :xx'%>")
+
+
+// $.ajax({
+// url: "http://localhost:3000/",
+// dataType: "script",
+// success: function(data) {
+//   alert("Here's lots of data, just a string: " + data);
+// }});
+
+
+
+
+
+
+@(document).append('<%= j render 'new' if current_user %>');
+<%= link_to index_path,
+
+  title: "Close comments",
+  id: "close_post_comments" do %>
+  <%= image_tag "icons/iconfinder_exit-delete-remove-close-x_2931151.png",
+  width: icon_size_v,
+  height: icon_size_h %>
+<% end if @post_comments %>
+
+<%#= render 'new' if current_user %>
+<br>
+<div id="last_comment_post_<%= @post.id %>"></div>
+
+
+
+ // $("#close_post_comments").click(function(){
+ //   $("#post_comments").fadeOut(1000);
+ // });
+
+
+
+//  $('.actions').on('ajax:beforeSend', (event, xhr, settings), function() {
+//   settings.url += ('?page=' + window.progressPage)
+// });
+
+// window.progressPage +=1;
+// $('.progress').append("<%= j render partial: 'xx', collection: @xx, as: :xx'%>")

@@ -3,13 +3,20 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.all
+    @users ||= User.all
   end
 
-  def show; end
+  def show
+    @user ||= User.find(params[:id])
+        respond_to do |format|
+      format.html
+      format.js
+      format.json
+    end
+  end
 
   def new
-    @user = User.new
+    @user ||= User.new
   end
 
   def edit

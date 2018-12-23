@@ -1,0 +1,21 @@
+<div class="comment">
+  <div class="comment_avatar">
+    <%= image_tag comment.user.avatar_url(:thumb), class: 'leftimg' if comment.user.avatar.present? %>
+  </div>
+  <div class="comment_created_by">
+    Commenter: 
+    <%= comment.user.name %>
+    Commented: 
+    <%= comment.created_at.strftime("%H:%M:%S %-d.%-m.%Y") %>
+    Changed:
+    <%= comment.updated_at.strftime("%H:%M:%S %-d.%-m.%Y") %>
+    <%= link_to 'Drop',
+      user_post_comment_path(comment.user_id, comment.post_id, comment.id),
+      remote: true,
+      method: :delete,
+      data: { confirm: 'Are you sure?' } %>
+    </div>
+    <div class="comment_text">
+      <%= comment.text %>
+    </div>
+</div>

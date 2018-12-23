@@ -1,19 +1,2 @@
-<div class="container">
-  <div class="row justify-content-md-center">
-    <div class="col-11">
-      <h3>My posts</h3>
-      <% @my_posts.each do |post| %>
-      <p>
-        <h2><%= post.header %></h2>
-        <p><%= post.body %>
-          <p>
-            <%= link_to 'Show', user_post_path(current_user, post) %>
-            <%= link_to 'Edit', edit_user_post_path(current_user, post) %>
-            <%= link_to 'Destroy', user_post_path(current_user, post), method: :delete, data: { confirm: 'Are you sure?' } %>
-          </p>
-        </p>
-      </p>
-      <% end %>
-    </div>
-  </div>
-</div>
+<h1>My posts</h1>
+<%= render template: 'posts/index' %>

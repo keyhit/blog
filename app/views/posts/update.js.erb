@@ -1,0 +1,15 @@
+var showPost = $("#render_post_<%= @post.id %>").text().length;
+if (showPost == 0){
+  $("#render_post_<%= @post.id %>").hide().html('<%= j render "show" %>').fadeIn(1000);
+}
+else{
+  $('#render_post_<%= @post.id %>').fadeIn(1000);
+}
+
+$('#post_form').fadeOut(1000);
+// $('#post_form').hide();
+
+$("#close_show_post ").click(function(){
+  $("#post_<%= params[:id] %>").fadeIn(1000);
+  $('#render_post_<%= @post.id %>').fadeOut(1000);
+});

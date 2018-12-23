@@ -9,35 +9,22 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <%= render template: 'layouts/logout_navigation' if current_user %>
-          <%= render template: 'layouts/login_navigation' if current_user.nil? %>
-          <li class="nav-item"><%= link_to 'About',
-            'https://github.com/keyhit/blog',
-             target: '_blank',
-             title: 'Project at github', class: 'nav-link' %>
-          </li>
-          <li class="nav-item"><%= link_to 'All posts', all_posts_path, class: 'nav-link '%></li>
-          <%= render template: 'layouts/user_navigation' if current_user %>
-        </ul>
-        <span class="navbar-text">
-          <p id="notice"><%= notice %></p>
-        </span>
-      </div>
-    </nav>
+    <div id="background_image"></div>
+    <%= render template: 'layouts/navigation'%>
+    <% content_for :user_data_container do %>
+      <%= render template: 'layouts/user_data_container' if current_user %>
+    <% end %>
     <div class="container">
-      <div class="row justify-content-md-center">
-        <div class="col-11">
-          <div class = "content">
+      <div class="row">
+        <div class="col-2">
+          <%= yield :user_data_container %>
+
+        </div>
+        <div class="col-10">
             <%= yield %>
-          </div>
         </div>
       </div>
     </div>
+
   </body>
 </html>

@@ -1,0 +1,17 @@
+// alert('Post comments')
+
+var showPost = $("#post_comments_19").text().length;
+if (showPost == 0){
+  alert(0)
+  $("#post_comments_19").hide().append('<%= j render "post_comments" %>').fadeIn("slow");
+  $('#post_comments_<%= @post.id %>').before('<%= j render "navigation" %>')
+  $('#new_post_form').html('<%= j render 'new' if current_user %>');
+  $('#end_comments').html('<%= j render "navigation" %>')
+}
+
+
+
+$('#close_post_comments').click(function(){
+  $("#post_comments_<%= @post.id %>").fadeOut("slow");
+})
+location

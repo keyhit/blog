@@ -1,15 +1,25 @@
 <li class="nav-item">
-  <%= link_to 'My posts', all_user_posts_url(current_user), class: 'nav-link' %>
-  </li>
+  <%= link_to 'My posts',
+   my_posts_url,
+   id: "my_posts",
+   class: 'nav-link' %>
+</li>
 
 <li class="nav-item">
-  <%= link_to 'New post', new_user_post_path(current_user), class: 'nav-link' if current_user %>
+  <%= link_to 'New post', new_user_post_path(current_user),
+    remote: true,
+    id: "new",
+    class: 'nav-link' if current_user %>
  </li>
 
 <li class="nav-item">
- <%= link_to 'My Comments', user_comments_path(current_user), class: 'nav-link' %>
+  <%#= link_to 'My comments', user_comments_path(current_user), class: 'nav-link' %>
  </li>
 
 <li class="nav-item">
-  <%= link_to "You here as: #{current_user.name} user", user_path(current_user), class: 'nav-link' if current_user %>
+  <%#= link_to 'My post`s comments', user_comments_path(current_user), class: 'nav-link' %>
+</li>
+
+<li class="nav-item">
+  <%= link_to "My profile", user_path(current_user), class: 'nav-link' if current_user %>
 </li>

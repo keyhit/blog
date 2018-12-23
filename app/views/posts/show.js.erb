@@ -1,0 +1,29 @@
+var showPost = $("#render_post_<%= @post.id %>").text().length;
+if (showPost == 0){
+  $("#render_post_<%= @post.id %>").hide().append('<%= j render "show" %>').fadeIn("slow");
+}
+else{
+  $('#render_post_<%= @post.id %>').fadeIn("slow");
+}
+
+$("#post_<%= params[:id] %>").fadeOut("slow");
+
+$("#close_show_post, #close_show_post_2").click(function(){
+  $("#post_<%= params[:id] %>").fadeIn("slow");
+  $('#render_post_<%= @post.id %>').fadeOut("slow");
+});
+
+if ('<%= params[:commit] %>' == "Update Post")
+{
+    $('#ajax_header').replaceWith('<h3 id="ajax_header"><%= j @post.header %></h3>');
+    $('#ajax_image').replaceWith('<p id="ajax_image"><img src="<%= @post.image_url %>"/></p>');
+    $('#ajax_body').replaceWith('<p id="ajax_body">&nbsp;&nbsp;<%= j @post.body %></p>');
+}
+else
+{
+    console.log('unshowed update')
+}
+
+$("#close_editor").click(function(){
+  $("#post_form").fadeOut("slow");
+});

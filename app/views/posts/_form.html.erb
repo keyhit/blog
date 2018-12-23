@@ -1,4 +1,8 @@
-<%= bootstrap_form_with model: [@user, @post], local: true do |form| %>
+<div id='post_form'>
+
+<h3><%= "Edit post" if params[:action] == 'edit' %></h3>
+
+<%= bootstrap_form_with model: [@user, @post], remote: true do |form| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this @post from being saved:</h2>
@@ -11,9 +15,20 @@
   <% end %>
     <%= form.text_field :header %>
     <%= form.file_field :image %>
-    <%= form.text_area :body, cols: 50, rows: 10 %>
+    <%= form.text_area :body, cols: 50, rows: 5 %>
     <%= form.submit %>
-    <%= link_to 'Back to post', user_post_path(params[:user_id], params[:id]) , type: 'button', class: 'btn btn-light' if params[:action] == 'edit' %>
 
-    <%= link_to 'All posts', all_posts_path , type: 'button', class: 'btn btn-light' if params[:action] == 'new' %>
+    <%= link_to 'Close editor',
+      user_post_path(params[:user_id], params[:id]),
+      remote: true,
+      id:     'close_editor',
+      type:   'button',
+      class:  'btn btn-light' if params[:action] == 'edit' %>
+
+    <%= link_to 'Cancel',
+      root_path,
+      type: 'button',
+      class: 'btn btn-light' if params[:action] == 'new' %>
+
 <% end %>
+</div>

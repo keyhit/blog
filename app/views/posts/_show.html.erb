@@ -1,0 +1,37 @@
+<%#= render 'show_navigation' %>
+<%= link_to root_path(anchor: "post_#{@post.id}"),
+  remote: true,
+  id: "close_show_post",
+  title: "Back to posts" do %>
+  <%= image_tag "icons/iconfinder_left-arrow-back_2931162.png",
+  width: icon_size_v,
+  height: icon_size_h %>
+  ...back to posts
+<% end %>
+<div id="post">
+  <div class="comment_body">
+    <p>
+    <h3 id="ajax_header"><%= @post.header%></h3>
+    <p id="ajax_image"><%= image_tag @post.image_url, class: 'leftimg' if @post.image.present? %></p>
+    <p id="ajax_body"><%= @post.body%></p>
+
+    <!-- http request data -->
+    <h3 id="header"><%#= @post.header%></h3>
+    <%#= image_tag @post.image_url, class: 'leftimg' if @post.image.present? %>
+    <p id="body"><%#= @post.body%></p>
+    </p>
+  </div>
+   <%= render 'show_navigation' %>
+</div>
+<p>
+  <div id="edit_post<%= @post.id%>"></div>
+</p>
+<p>
+  <div id="before_close_comments_<%= @post.id %>"></div>
+  <div id="form_comments_<%= @post.id %>"></div>
+  <div id="post_comments_<%= @post.id %>"></div>
+  <div id="after_close_comments_<%= @post.id %>"></div>
+</p>
+<hr>
+
+
