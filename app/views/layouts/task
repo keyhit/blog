@@ -34,7 +34,7 @@
 ++1. Посты юзера (blog.com/username/posts)
 ++2. Черновики постов (перед публикацией... для публикации нажимаем "опублимковать")
 ++3. Возможность добавить ссылку на ютуб, а на выходе это должен быть плеер
-4. wysiwyg editor (например, trix)
+++4. wysiwyg editor (например, trix)
 5. Возможность забанить пользователя.
 6. Голосование за посты.
 7. Голосование за комментарии.
@@ -49,3 +49,19 @@ https://drive.google.com/file/d/1E-4SV6FxrZMzSQlxSnYdqnqomRPguVde/view?usp=shari
 3. Comment comments
 
 4. Теги (https://github.com/mbleigh/acts-as-taggable-on), с поиском по тегам при клике на них.
+
+Привет! Задачи на вечер )
+0. Напоминаю про AJAX (голосовалка – минимум, но можно и постинг комментариев сделать).
+1. http://thecodeplayer.com/ выбираем пару прикольных эффектов и добавляем к проекту.
+2. В рамках одной сессии 1 раз через 10 переходов по сайту покажите посетителю красивый всплывающий баннер "Учитесь вместе с GeekHub" или другой позитивный призыв. Развернуть все на Хероку.
+3. Добавить ЧПУ, что бы в url постов и страниц были соответствующие странице тайтлы (5-some-blog-title)... это делается с методом to_param (ищем в доках, как работает).
+4. Прочесть и разобраться с вебпакером (https://github.com/rails/webpacker) и yarn... https://gist.github.com/maxivak/2612fa987b9f9ed7cb53a88fcba247b3
+https://guides.rubyonrails.org/5_1_release_notes.html#optional-webpack-support
+И еще погуглите по теме )
+5. Сделать визуальную доработку. Добавить иконок (можно с font-awesome) c помощью вебпакера. Идеи и вдохновения можно черпнуть с:
+https://themeforest.net/search?utf8=%E2%9C%93&term=blog&referrer=homepage
+
+https://dribbble.com/search?q=blog
+
+https://www.behance.net/search?field=102&content=projects&sort=appreciations&time=month&search=blog
+

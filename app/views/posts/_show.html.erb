@@ -20,8 +20,9 @@
     </p>
 
     <p id="ajax_image"><%= image_tag @post.image_url, class: 'leftimg' if @post.image.present? %></p>
-    <p id="ajax_body"><%= @post.body%></p>
-
+    <div class="fr-view">
+      <p id="ajax_body"><%= @post.body.html_safe%></p>
+    </div>
     <!-- http request data -->
     <h3 id="header"><%#= @post.header%></h3>
     <%#= image_tag @post.image_url, class: 'leftimg' if @post.image.present? %>

@@ -17,7 +17,9 @@
     <%= form.file_field :image %>
     Copy youtube link in browser address line and paste here
     <%= form.text_field :youtube %>
-    <%= form.text_area :body, cols: 50, rows: 5 %>
+
+
+    <%= form.text_area :body, cols: 50, rows: 5%>
     <%= form.check_box :published %>
     <%= form.submit %>
 
@@ -35,3 +37,11 @@
 
 <% end %>
 </div>
+
+
+<div id="froala-editor"></div>
+
+<!-- Include the Font Awesome 5 JS. If you have a license for the PRO license, include the downloaded JS from Font Awesome website. -->
+<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+ 
+ <script> $(function() { $('textarea').froalaEditor() }); </script>
