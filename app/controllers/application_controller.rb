@@ -36,4 +36,12 @@ class ApplicationController < ActionController::Base
     end
   end
   helper_method :chesck_owner
+
+  # def ban_user
+  #   unless current_user == 'admin'
+  #     p 'can`t ban'
+  #     redirect_to root_path
+  #   end
+  # end
+  # helper_method :ban_user
 end

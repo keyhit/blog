@@ -18,8 +18,21 @@
           <%= form.text_field :name %>
           <%= form.file_field :avatar %>
           <%= form.email_field :email %>
-          <%= form.password_field :password %>
-          <%= form.password_field :password_confirmation %>
+
+          <div id="change_password">
+            <b>Change password</b>
+          </div>
+
+          <div  id="password">
+            <%= form.password_field :password %>
+            <%= form.password_field :password_confirmation %>
+          </div>
+          <%#= form.select :role, User::ROLE, selected: User::ROLE[0] if User.all.blank? %>
+          <% if User.all.blank? %>
+            <%= form.select :role, User::ROLE, selected: User::ROLE[0] %>
+          <% else current_user == 'admin' %>
+            <%= form.select :role, User::ROLE, selected: User::ROLE[2] %>
+          <% end %>
           <%= form.submit %>
           <%= link_to 'Back', users_path, type: 'button', class: 'btn btn-light'%>
         <% end %> 
@@ -27,3 +40,17 @@
   </div>
 </div>
 
+<script type="text/javascript">
+  $(document).ready(function(){
+    if ('<%= current_user %>' == "") {
+      $('#password').show();
+    }
+    else {
+      $('#password').hide();
+    }
+  })
+
+  $('#change_password').click(function() {
+    $('#password').toggle();
+  });
+</script>

@@ -57,6 +57,21 @@ class UsersController < ApplicationController
 
   def destroy
   end
+
+  def ban_user
+   @user = User.find(params[:id])
+   p @user.id
+   @user.update(ban: true)
+   redirect_to root_path
+  end
+
+  def un_ban_user
+   @user = User.find(params[:id])
+   p @user.id
+   @user.update(ban: false)
+   redirect_to root_path
+  end
+
   private
 
   def set_user
@@ -64,6 +79,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar, :role, :ban)
   end
 end

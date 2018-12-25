@@ -85,6 +85,13 @@
               <%= post.created_at.strftime("%H:%M:%S %-d.%-m.%Y") %>.
               Updated
                 <%= post.updated_at.strftime("%H:%M:%S %-d.%-m.%Y")%>.
+              <% if current_user %>
+                <% if post.user.ban == false %>
+                  <%= link_to 'baning', ban_user_path( id: post.user_id ), method: :put, remote: true  if current_user.role == 'admin'%>
+                <% else %>
+                  <%= link_to 'unbaning', un_ban_user_path( id: post.user_id ), method: :put, remote: true if current_user.role == 'admin'%>
+                <% end %>
+              <% end %>
           </div>
         </div>
 
